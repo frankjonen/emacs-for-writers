@@ -58,7 +58,7 @@ values."
       ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-frozen-packages '()
       ;; A list of packages that cannot be updated.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(adaptive-wrap)
       ;; A list of packages that will not be installed and loaded.
    dotspacemacs-install-packages 'used-only))
       ;; Defines the behaviour of Spacemacs when installing packages.
@@ -341,7 +341,7 @@ values."
 ;; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;; User Info
 
-(setq user-mail-address "your@email.com")
+(setq user-mail-address "you@email.com")
 ;; Put your email address in here
 
 
@@ -354,7 +354,9 @@ values."
 
 (with-eval-after-load 'evil-maps
 	(define-key evil-motion-state-map (kbd "C-a") 'move-beginning-of-line)
-	(define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line))
+	(define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line)
+	(define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
+	(define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line))
 
 ; If you want to redefine more, here are their names
 ; https://github.com/magnars/.emacs.d/blob/master/site-lisp/evil/evil-maps.el
@@ -448,7 +450,7 @@ values."
 
 (setq projectile-completion-system 'ivy)
 (setq projectile-ignore-global '(".DS_Store" ".gitmodules" ".gitignore"))
-;; (setq projectile-project-search-path '("~/projects/" "~/work/"))
+(setq projectile-project-search-path '("~/documents/concepts/"))
 
 
 
@@ -497,10 +499,11 @@ values."
 	(setq org-hide-emphasis-markers t)
 	(setq org-fontify-whole-heading-line t)
 	(setq org-tags-column 0)
-	(setq org-bullets-bullet-list '("⬢" "◆" "▲" "■" ""))
-	(setq org-indent-mode t)
+	(setq org-bullets-bullet-list '("⬢" "◆" "▲" "■"))
 	(setq org-adapt-indentation t)
 	(setq line-move-visual t)
+	; Change Default Keymaps
+	(define-key org-mode-map (kbd "C-S-<return>") 'org-insert-subheading)
 	; Shortcuts to Interactive Functions
 	(define-key org-mode-map [f9]  #'split-and-indirect-orgtree)
 	(define-key org-mode-map [f12] #'kill-and-unsplit-orgtree)
@@ -553,6 +556,7 @@ values."
 	'(org-level-2               ((t (:foreground "#3fc6b7"))))
 	'(org-level-3               ((t (:foreground "#dc4d59"))))
 	'(org-list-dt               ((t (:foreground "#ea412b"))))
+	'(org-table                 ((t (:inherit fixed-pitch))) t)
 	'(org-ellipsis              ((t (:foreground "#51c4b5")))))
 
 
@@ -565,9 +569,9 @@ values."
 	(windmove-right)
 	(split-window-below)
 	(windmove-left)
-	(find-file "draft.org" t)
+	(find-file "*draft.org" t)
 	(windmove-right)
-	(find-file "notes.md" t)
+	(find-file "*notes.md" t)
 	(windmove-left))
 	
 (with-eval-after-load 'dired
@@ -589,8 +593,7 @@ values."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- )
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
