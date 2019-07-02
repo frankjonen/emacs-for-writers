@@ -450,7 +450,7 @@ values."
 
 (setq projectile-completion-system 'ivy)
 (setq projectile-ignore-global '(".DS_Store" ".gitmodules" ".gitignore"))
-(setq projectile-project-search-path '("~/documents/concepts/"))
+;(setq projectile-project-search-path '("~/work/"))
 
 
 
@@ -491,9 +491,9 @@ values."
 
 
 (with-eval-after-load 'org
-	(setq org-agenda-files '("~/Org/Notes/"
-	                         "~/Org/Agenda/"))
-	(setq org-default-notes-file "~/Org/Notes/notes.org")
+	;(setq org-agenda-files '("~/Org/Notes/"
+	;                         "~/Org/Agenda/"))
+	;(setq org-default-notes-file "~/Org/Notes/notes.org")
 	(setq org-ellipsis "⤵")
 	(setq org-catch-invisible-edits 'show-and-error)
 	(setq org-hide-emphasis-markers t)
